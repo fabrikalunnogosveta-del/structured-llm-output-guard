@@ -13,6 +13,15 @@
 
 ## The problem we solved
 
+| Problem (before) | Solution (this library) |
+|---|---|
+| ```` ```json … ``` ```` breaks `json.loads` | `strip_fences` |
+| Prose before JSON («Sure! Here's…») | prefix strip |
+| Smart quotes / trailing commas | `tolerant_parse` |
+| Valid JSON but wrong shape | `Schema` / `Field` contracts |
+| Truncation / garbage = crash or silent junk | fail-closed + **RepairLoop** with exact error |
+| Blind retries on dead API | **CircuitBreaker** |
+
 **`json.loads(llm_text)` is a trap.** LLMs do not return JSON — they return *text that looks like JSON*.
 
 ```python
