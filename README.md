@@ -2,14 +2,18 @@
 
 **One safe path from LLM text to typed JSON — schema validation, repair loop, and circuit breaker.**
 
+**This is the solution, not the problem.** In production multi-agent pipelines, structured LLM output is the only JSON path (60+ contracts, 83 call sites). This repo is that pattern as a standalone library.
+
 [![CI](https://github.com/fabrikalunnogosveta-del/structured-llm-output-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/fabrikalunnogosveta-del/structured-llm-output-guard/actions)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Tests](https://img.shields.io/badge/tests-11%20passed-brightgreen)
+![Tests](https://img.shields.io/badge/tests-12%20passed-brightgreen)
 
 ---
 
-## Why `json.loads` is a trap
+## The problem we solved
+
+**`json.loads(llm_text)` is a trap.** LLMs do not return JSON — they return *text that looks like JSON*.
 
 ```python
 json.loads(llm_response)  # 💥
