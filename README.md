@@ -2,7 +2,7 @@
 
 **One safe path from LLM text to typed JSON — schema validation, repair loop, and circuit breaker.**
 
-**This is the solution, not the problem.** In production multi-agent pipelines, structured LLM output is the only JSON path (60+ contracts, 83 call sites). This repo is that pattern as a standalone library.
+**This is the solution, not the problem.** In production multi-agent pipelines, structured LLM output is the only JSON path (60+ contracts, 49 injection points in 17 files). This repo is that pattern as a standalone library.
 
 [![CI](https://github.com/fabrikalunnogosveta-del/structured-llm-output-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/fabrikalunnogosveta-del/structured-llm-output-guard/actions)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
@@ -163,7 +163,7 @@ python -m pytest tests/ -q
 ## Production context
 
 Extracted from a multi-agent production platform where **Instructor-style structured
-output was the only JSON path** (60+ Pydantic contracts, 83 call sites, C1–C7 gates).
+output was the only JSON path** (60+ Pydantic contracts, 49 injection points in 17 files, C1–C7 gates).
 
 This repo is the **standalone core** — no vendor lock-in, no secrets.
 
